@@ -1,0 +1,17 @@
+{
+  "name": "Piccole Stiliste",
+  "short_name": "Piccole Stiliste",
+  "description": "I tuoi 49 look con i cartamodelli per bambole",
+  "lang": "it",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "/",
+  "scope": "/",
+  "background_color": "#FFF8EC",
+  "theme_color": "#10265A",
+  "icons": [
+    { "src": "/assets/icon-ps-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icon-ps-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icon-ps-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
