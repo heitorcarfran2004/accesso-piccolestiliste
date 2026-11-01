@@ -915,7 +915,7 @@
           <details><summary>Come stampo i cartamodelli nella misura giusta?</summary><p>Carta A4, scala al 100% («dimensioni effettive»), senza «adatta alla pagina». Prima di tagliare, misura il quadratino del test di stampa: deve essere 2 cm × 2 cm.</p></details>
           <details><summary>Vanno bene per la mia bambola?</summary><p>I cartamodelli sono fatti per bambole fashion da 29 cm. Per una bambola più grande o più piccola, ingrandisci o riduci la stampa e prova prima su un ritaglio di stoffa.</p></details>
           <details><summary>Che tessuto uso?</summary><p>Ogni look ha i «tessuti consigliati». Per iniziare vanno benissimo cotone e maglina sottile; il denim e il raso sono più impegnativi.</p></details>
-          <details><summary>Quando arrivano i bonus?</summary><p>I 4 bonus sono in preparazione e il tuo accesso è già garantito. Appaiono qui nell'app appena pronti, e ricevi l'avviso nella campanella.</p></details>
+          <details><summary>Dove trovo i bonus?</summary><p>Nella Home, nella sezione «Bonus»: la Mappa della Moda, il Quaderno di disegno, l'Attestato con le sue regole e la Scatola da cucito. Ognuno si apre qui nell'app e ha il suo PDF da stampare.</p></details>
           <details><summary>Come installo l'app sul telefono?</summary><p>Nella scheda App c'è il passo passo per il tuo dispositivo. Una volta installata, Piccole Stiliste si apre direttamente dalla schermata Home, a schermo intero.</p></details>
           <details><summary>Come funziona la garanzia?</summary><p>Hai 7 giorni dall'acquisto. Se non ti piace, mandaci un messaggio con l'argomento «Rimborso» e ti restituiamo il 100% dell'importo.</p></details>
         </div>
@@ -1052,7 +1052,7 @@
       var liberado = (k === 'principal' && (meus.indexOf(ITEM) >= 0 || (ACEITA_QUALQUER_COMPRA && meus.length > 0))) ||
         (k === 'bonus' && meus.indexOf(ITEM_BONUS) >= 0) ||
         (p.tipo === 'extra' && ((!!p.item && meus.indexOf(p.item) >= 0) || (!!p.comGuias && meus.indexOf(ITEM) >= 0)));
-      prod[k] = { liberado: liberado, embreve: !!p.embreve, pasta: liberado && !p.embreve ? '/assets/livros/' + k + '/' : null };
+      prod[k] = { liberado: liberado, embreve: !!p.embreve, pasta: liberado && !(p.embreve && !p.dono) ? '/assets/livros/' + k + '/' : null };
     });
     var pf = perfil();
     return json({ ok: true, email: email, produtos: prod, vapid: VAPID_PUBLICO,
@@ -1136,7 +1136,12 @@ var LIVROS = {
     // "col" = la stagione (indice raggruppato)
     colecoes: ["Primavera/Estate","Autunno/Inverno"],
     indice: [{"n":1,"nome":"Costume sgambato · Rif. 094","pag":4,"col":1},{"n":2,"nome":"Bikini arricciato davanti · Rif. 095","pag":6,"col":1},{"n":3,"nome":"Abito con tagli principessa · Rif. 096","pag":8,"col":1},{"n":4,"nome":"Abito con maniche integrate · Rif. 097","pag":10,"col":1},{"n":5,"nome":"Top corto e shorts · Rif. 098","pag":12,"col":1},{"n":6,"nome":"Abito a portafoglio · Rif. 100","pag":16,"col":1},{"n":7,"nome":"Abito corto con balza · Rif. 001","pag":20,"col":1},{"n":8,"nome":"Pantaloni capri e blusa con balza · Rif. 004","pag":26,"col":1},{"n":9,"nome":"Abito corto da festa · Rif. 005","pag":28,"col":1},{"n":10,"nome":"Abito a fiori con balza · Rif. 006","pag":30,"col":1},{"n":11,"nome":"Abito vintage · Rif. 009","pag":36,"col":1},{"n":12,"nome":"Gonna corta e top corto · Rif. 012","pag":42,"col":1},{"n":13,"nome":"Gonna con spacco e top corto · Rif. 013","pag":44,"col":1},{"n":14,"nome":"Tuta palazzo · Rif. 014","pag":46,"col":1},{"n":15,"nome":"Shorts con tasche e blusa · Rif. 015","pag":48,"col":1},{"n":16,"nome":"Minigonna a portafoglio e top · Rif. 016","pag":50,"col":1},{"n":17,"nome":"Gonna con tasche e blusa · Rif. 018","pag":54,"col":1},{"n":18,"nome":"Abito vichy con spalle scoperte · Rif. 020","pag":58,"col":1},{"n":19,"nome":"Abito vichy · Rif. 022","pag":62,"col":1},{"n":20,"nome":"Costume da bagno vichy · Rif. 023","pag":64,"col":1},{"n":21,"nome":"Abito corto in jeans · Rif. 026","pag":70,"col":1},{"n":22,"nome":"Abito con schiena scoperta · Rif. 028","pag":74,"col":1},{"n":23,"nome":"Abito con gonna arricciata · Rif. 029","pag":76,"col":1},{"n":24,"nome":"Abito corto incrociato · Rif. 031","pag":80,"col":1},{"n":25,"nome":"Costume da bagno con kimono · Rif. 032","pag":82,"col":1},{"n":26,"nome":"Abito a cuore senza spalline · Rif. 033","pag":85,"col":1},{"n":27,"nome":"Gonna con spacco e crop top · Rif. 034","pag":87,"col":1},{"n":28,"nome":"Pantaloni palazzo e blusa incrociata · Rif. 035","pag":89,"col":1},{"n":29,"nome":"Gonna a portafoglio e top vichy · Rif. 036","pag":91,"col":1},{"n":30,"nome":"Abito corto drappeggiato · Rif. 037","pag":93,"col":1},{"n":31,"nome":"Gonna lunga e top · Rif. 039","pag":97,"col":1},{"n":32,"nome":"Gonna con spacco e top con spalle scoperte · Rif. 040","pag":99,"col":1},{"n":33,"nome":"Abito con scollo a V · Rif. 041","pag":101,"col":1},{"n":34,"nome":"Cappotto ampio con collo · Rif. 099","pag":14,"col":2},{"n":35,"nome":"Blusa e leggings capri · Rif. 101","pag":18,"col":2},{"n":36,"nome":"Abito da ufficio · Rif. 002","pag":22,"col":2},{"n":37,"nome":"Scamiciato plissettato · Rif. 003","pag":24,"col":2},{"n":38,"nome":"Blusa oversize a maniche lunghe · Rif. 007","pag":32,"col":2},{"n":39,"nome":"Blusa a sbuffo e leggings · Rif. 008","pag":34,"col":2},{"n":40,"nome":"Abito con maniche a sbuffo · Rif. 010","pag":38,"col":2},{"n":41,"nome":"Abito a maniche lunghe con balza · Rif. 011","pag":40,"col":2},{"n":42,"nome":"Abito con gilet · Rif. 017","pag":52,"col":2},{"n":43,"nome":"Look da festa invernale · Rif. 019","pag":56,"col":2},{"n":44,"nome":"Scamiciato a quadri con blusa · Rif. 021","pag":60,"col":2},{"n":45,"nome":"Jeans e blusa a maniche lunghe · Rif. 024","pag":66,"col":2},{"n":46,"nome":"Giacca corta e leggings · Rif. 025","pag":68,"col":2},{"n":47,"nome":"Cappotto con cappuccio e cintura · Rif. 027","pag":72,"col":2},{"n":48,"nome":"Pigiama a maniche lunghe · Rif. 030","pag":78,"col":2},{"n":49,"nome":"Look da ufficio · Rif. 038","pag":95,"col":2}],
-    pdf: [['/pdf/Piccole-Stiliste-Collezione-2027.pdf', 'I 49 look · 102 pagine', 24.7]] }
+    pdf: [['/pdf/Piccole-Stiliste-Collezione-2027.pdf', 'I 49 look · 102 pagine', 24.7]] },
+  // i bonus (generati da scripts/ps-app-bonus.cjs)
+  b1: {"dono":"bonus","sub":"b1/","titulo":"Mappa della Moda","paginas":6,"w":1055,"h":1491,"rotulo":"Pagine","indice":[{"n":1,"nome":"Pagina 1","pag":1},{"n":2,"nome":"Pagina 2","pag":2},{"n":3,"nome":"Pagina 3","pag":3},{"n":4,"nome":"Pagina 4","pag":4},{"n":5,"nome":"Pagina 5","pag":5},{"n":6,"nome":"Pagina 6","pag":6}],"pdf":[["/pdf/Mappa-della-Moda.pdf","Mappa della Moda",2]]},
+  b2: {"dono":"bonus","sub":"b2/","titulo":"Quaderno di disegno dei look","paginas":6,"w":1491,"h":1055,"rotulo":"Pagine","indice":[{"n":1,"nome":"Pagina 1","pag":1},{"n":2,"nome":"Pagina 2","pag":2},{"n":3,"nome":"Pagina 3","pag":3},{"n":4,"nome":"Pagina 4","pag":4},{"n":5,"nome":"Pagina 5","pag":5},{"n":6,"nome":"Pagina 6","pag":6}],"pdf":[["/pdf/Quaderno-di-disegno-dei-look.pdf","Quaderno da stampare",2.1]]},
+  b3: {"dono":"bonus","sub":"b3/","titulo":"Attestato della Piccola Stilista","paginas":3,"w":1055,"h":1491,"rotulo":"Pagine","indice":[{"n":1,"nome":"Come ottenere l’attestato","pag":1},{"n":2,"nome":"La checklist","pag":2},{"n":3,"nome":"L’attestato","pag":3}],"pdf":[["/pdf/Regole-dell-attestato.pdf","Le regole",0.6],["/pdf/Attestato-della-Piccola-Stilista.pdf","L’attestato (A4 orizzontale)",0.3]]},
+  b4: {"dono":"bonus","sub":"b4/","titulo":"Scatola da cucito","paginas":1,"w":1055,"h":1491,"rotulo":"Pagine","indice":[{"n":1,"nome":"Pagina 1","pag":1}],"pdf":[["/pdf/Scatola-da-cucito.pdf","Con i link cliccabili",0.4]]}
 };
 
 var CATALOGO = [
@@ -1144,15 +1149,15 @@ var CATALOGO = [
     desc: '49 look per bambole fashion da 29 cm, per primavera, estate, autunno e inverno. Ogni look ha la pagina con la foto, le varianti e i tessuti consigliati, e il cartamodello pronto da stampare.',
     venda: VENDA, preco: '', rotuloVenda: 'Sblocca la collezione',
     inclui: ['49 look in 2 collezioni: Primavera/Estate e Autunno/Inverno', 'Cartamodelli in scala reale, pronti da stampare', 'Tessuti consigliati e varianti di ogni look', 'Livello di difficoltà e passaggi di ogni modello', 'PDF pronto da stampare'] },
-  // i 4 bonus della pagina di vendita: in italiano non esistono ancora (solo le copertine, "in arrivo")
-  { id: 'b1', dono: 'bonus', tipo: 'bonus', embreve: true, titulo: 'Mappa della Moda', desc: 'I grandi stilisti contemporanei per ampliare i riferimenti.' },
-  { id: 'b2', dono: 'bonus', tipo: 'bonus', embreve: true, titulo: 'Quaderno del Design dei Look', desc: 'Spazio per disegnare, provare abbinamenti e creare bozzetti.' },
-  { id: 'b3', dono: 'bonus', tipo: 'bonus', embreve: true, titulo: 'Attestato della Piccola Stilista', desc: 'Una chiusura speciale per festeggiare la prima collezione.' },
-  { id: 'b4', dono: 'bonus', tipo: 'bonus', embreve: true, titulo: 'Dal Gioco a un Piccolo Marchio', desc: 'Primi passi per pensare a nome, marchio e presentazione.' }
+  // i 4 bonus (quelli senza pagine restano "in arrivo")
+  {"id":"b1","dono":"bonus","tipo":"bonus","embreve":false,"titulo":"Mappa della Moda","desc":"I grandi stilisti che hanno cambiato la moda, per ampliare i riferimenti della tua piccola stilista."},
+  {"id":"b2","dono":"bonus","tipo":"bonus","embreve":false,"titulo":"Quaderno di disegno dei look","desc":"Pagine da stampare per disegnare, abbinare e inventare i propri look."},
+  {"id":"b3","dono":"bonus","tipo":"bonus","embreve":false,"titulo":"Attestato della Piccola Stilista","desc":"Le regole per conquistarlo e l’attestato da compilare alla fine della prima collezione."},
+  {"id":"b4","dono":"bonus","tipo":"bonus","embreve":false,"titulo":"Scatola da cucito","desc":"Cosa serve per cucire con la tua piccola stilista, con i link per trovarlo online."}
 ];
 var BONUS_PACOTE = { titulo: 'I 4 bonus', venda: '', preco: '',
-  desc: 'Sono in preparazione e arrivano qui nell\'app appena pronti.',
-  inclui: ['Mappa della Moda', 'Quaderno del Design dei Look', 'Attestato della Piccola Stilista', 'Dal Gioco a un Piccolo Marchio'] };
+  desc: 'Arrivano insieme alla collezione: aprili qui nell’app o scarica il PDF.',
+  inclui: ["Mappa della Moda","Quaderno di disegno dei look","Attestato della Piccola Stilista","Scatola da cucito"] };
 var TEXTOS = {};
 
 function $(id) { return document.getElementById(id); }
@@ -1244,10 +1249,10 @@ function desenharInicio() {
     if (e.pasta && p.aulas) return '<a class="card feito" href="#aulas"><div class="foto">' + capaImg(p.id, '220px') + '</div><div class="corpo"><h3>' + esc(p.titulo) + '</h3><span class="sub">Bonus ' + (i + 1) + ' · ' + esc(p.sub) + '</span><div class="pe"><span class="acao">Guarda le lezioni →</span></div></div></a>';
     if (e.pasta && p.texto) return '<button class="card feito" type="button" data-texto="' + p.id + '"><div class="foto">' + capaImg(p.id, '220px') + '</div><div class="corpo"><h3>' + esc(p.titulo) + '</h3><span class="sub">Bonus ' + (i + 1) + ' · ' + esc(p.sub) + '</span><div class="pe"><span class="acao">Apri →</span></div></div></button>';
     if (e.liberado && p.embreve) return '<button class="card bloq" type="button" data-produto="' + p.id + '"><div class="foto">' + capaImg(p.id, '220px') + '</div><div class="corpo"><h3>' + esc(p.titulo) + '</h3><span class="sub">Bonus ' + (i + 1) + '</span><div class="pe"><span class="acao">In arrivo</span></div></div></button>';
-    if (e.pasta) return '<a class="card feito" href="#ler/' + p.id + '"><div class="foto">' + capaImg(p.id, '220px') + '</div><div class="corpo"><h3>' + esc(p.titulo) + '</h3><span class="sub">Bonus ' + (i + 1) + ' · ' + (LIVROS[p.id] ? LIVROS[p.id].paginas - 1 : '') + ' pagine</span><div class="pe"><span class="acao">Apri →</span></div></div></a>';
+    if (e.pasta) return '<a class="card feito" href="#ler/' + p.id + '"><div class="foto">' + capaImg(p.id, '220px') + '</div><div class="corpo"><h3>' + esc(p.titulo) + '</h3><span class="sub">Bonus ' + (i + 1) + ' · ' + (LIVROS[p.id] ? LIVROS[p.id].paginas : '') + ' pagine</span><div class="pe"><span class="acao">Apri →</span></div></div></a>';
     return '<button class="card bloq" type="button" data-produto="' + p.id + '"><div class="foto">' + capaImg(p.id, '220px') + '<span class="tranca">' + ico('cadeado') + '</span></div><div class="corpo"><h3>' + esc(p.titulo) + '</h3><span class="sub">Bonus ' + (i + 1) + '</span><div class="pe"><span class="acao">In arrivo</span></div></div></button>';
   }).join('');
-  $('c-bonus').textContent = '4 in arrivo';
+  $('c-bonus').textContent = '4 sbloccati';
 
   // complete sua coleção: tudo o que a pessoa ainda não tem (os prontos primeiro; os em produção entram na fila de espera ao comprar)
   var mais = CATALOGO.filter(function (p) { return !estado(p).liberado && (p.tipo === 'aulas' || p.tipo === 'principal' || p.tipo === 'extra'); });

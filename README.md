@@ -1,8 +1,7 @@
 # Piccole Stiliste — app de membros (Itália, em italiano)
 
 Entrega do produto **Piccole Stiliste · Collezione 2027**: 49 look para bonecas fashion de 29 cm, em 102 páginas
-(capa, sommario e, para cada look, a página editoriale e o cartamodello), com os 4 bônus da página de vendas
-ainda "in arrivo". Mesma interface do app das Carteiras (clubedanina.vercel.app), vinda pelo app das Guias de Contas.
+(capa, sommario e, para cada look, a página editoriale e o cartamodello), com os 4 bônus. Mesma interface do app das Carteiras (clubedanina.vercel.app), vinda pelo app das Guias de Contas.
 Marca e cores do livro: azul-marinho #10265A, rosa #FF2F83, azul-petróleo #00B7C7 e creme #FFF8EC.
 
     node servidor.cjs     # http://localhost:4260
@@ -43,9 +42,11 @@ O `index.html` **não se edita à mão**: ele é gerado.
 |---|---|
 | Collezione 2027 (102 págs.) | `entregaveis/piccole-stiliste/it/gpt` (última versão de cada página, a correção `NNNx` quando existe) |
 | PDF (`pdf/Piccole-Stiliste-Collezione-2027.pdf`) | `~/Downloads/Roupas Bonecas/Entregável IT/` |
-| Bônus 1–4 (Mappa della Moda, Quaderno, Attestato, Dal Gioco a un Piccolo Marchio) | só capas provisórias: **"In arrivo"** (o ChatGPT recusou a tradução em 31/10) |
+| Bônus 1 · Mappa della Moda (6 págs.), 2 · Quaderno di disegno dei look (6 no leitor, 9 no PDF), 3 · Attestato (regras + certificado), 4 · Scatola da cucito (links da Amazon.it no PDF) | `it/gpt/b-*`, traduzidos em 01/11 com o prompt curto `prompts/bonus2.txt` (o longo era recusado). Lista em `scripts/ps-app-bonus.cjs` |
 
-Quando as 5 correções do livro (002x, 003x, 084x, 094x, 100x) saírem, rodar de novo `ps-app-arquivos.cjs`.
+As 5 correções do livro (002x, 003x, 084x, 094x, 100x) entraram em 01/11. Página nova ou corrigida: rodar `ps-app-arquivos.cjs` e `ps-app-montar.cjs`.
+
+O bônus "Dal Gioco a un Piccolo Marchio" da página de vendas não existe no material base: no app entrou a Scatola da cucito no lugar.
 
 ## Publicar (ainda não)
 
