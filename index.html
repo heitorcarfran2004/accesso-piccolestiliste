@@ -1184,7 +1184,7 @@ function pastaDe(id) {
 }
 function chaveUsuario() { return DADOS ? DADOS.email : ''; }
 function paginaSalva(id) { var n = parseInt(ler('cc:pag:' + chaveUsuario() + ':' + id), 10); return n > 0 ? n : 0; }
-function modeloNa(id, p) { var L = LIVROS[id], m = null; ((L && L.indice) || []).forEach(function (x) { if (x.pag <= p) m = x; }); return m; }
+function modeloNa(id, p) { var L = LIVROS[id], m = null; ((L && L.indice) || []).forEach(function (x) { if (x.pag <= p && (!m || x.pag > m.pag)) m = x; }); return m; }
 
 /* ═══════════ PERFIL: foto e nome em todo o app ═══════════ */
 function primeiroNome() { return (PERFIL.nome || '').trim().split(/\s+/)[0] || ''; }
@@ -1644,7 +1644,7 @@ var LEITOR = (function () {
     var L = LIVROS[id]; $('l-pag').textContent = 'Pagina ' + atual + ' di ' + L.paginas;
     var m = modeloDa(atual); $('l-indice-t').textContent = m ? m.nome.length > 22 ? L.rotulo : m.nome : L.rotulo;
   }
-  function modeloDa(p) { var L = LIVROS[id], m = null; (L.indice || []).forEach(function (x) { if (x.pag <= p) m = x; }); return m; }
+  function modeloDa(p) { var L = LIVROS[id], m = null; (L.indice || []).forEach(function (x) { if (x.pag <= p && (!m || x.pag > m.pag)) m = x; }); return m; }
   function abrir(novoId, pag, daArea) {
     var L = LIVROS[novoId], pasta = pastaDe(novoId); if (!L || !pasta) return false;
     if (id !== novoId) {
